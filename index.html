@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Rubie Space ♡</title>
+
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=Playfair+Display:ital,wght@400;500;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    background:
+        radial-gradient(circle at 20% 10%, rgba(255,255,255,.08), transparent 25%),
+        radial-gradient(circle at 80% 80%, rgba(255,180,210,.08), transparent 30%),
+        #09080b;
+
+    color: #fff;
+    font-family: 'DM Sans', sans-serif;
+    overflow-x: hidden;
+}
+
+
+/* =========================
+   TELA DE ENTRADA
+========================= */
+
+#intro {
+    position: fixed;
+    inset: 0;
+    background: #09080b;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 1s ease, visibility 1s ease;
+}
+
+#intro.hide {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.intro-content {
+    text-align: center;
+}
+
+.intro-small {
+    font-size: 9px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    opacity: .45;
+    margin-bottom: 20px;
+}
+
+.intro-title {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 45px;
+    margin-bottom: 30px;
+}
+
+.enter {
+    border: 1px solid rgba(255,255,255,.35);
+    background: transparent;
+    color: white;
+    padding: 13px 35px;
+    border-radius: 30px;
+    letter-spacing: 3px;
+    font-size: 10px;
+    cursor: pointer;
+    transition: .4s;
+}
+
+.enter:hover {
+    background: white;
+    color: black;
+}
+
+
+/* =========================
+   PARTÍCULAS
+========================= */
+
+.star {
+    position: fixed;
+    color: rgba(255,255,255,.5);
+    font-size: 9px;
+    pointer-events: none;
+    animation: floating 6s infinite ease-in-out;
+    z-index: 0;
+}
+
+.star1 { top: 12%; left: 10%; }
+.star2 { top: 27%; left: 88%; animation-delay: 1s; }
+.star3 { top: 60%; left: 7%; animation-delay: 2s; }
+.star4 { top: 78%; left: 92%; animation-delay: 3s; }
+.star5 { top: 40%; left: 80%; animation-delay: 4s; }
+.star6 { top: 85%; left: 20%; animation-delay: 5s; }
+
+@keyframes floating {
+
+    0%,100% {
+        transform: translateY(0);
+        opacity: .25;
+    }
+
+    50% {
+        transform: translateY(-18px);
+        opacity: .8;
+    }
+}
+
+
+/* =========================
+   CONTEÚDO
+========================= */
+
+.container {
+    width: 90%;
+    max-width: 460px;
+    margin: auto;
+    padding: 55px 0;
+    position: relative;
+    z-index: 2;
+}
+
+
+/* =========================
+   TOPO
+========================= */
+
+.top {
+    text-align: center;
+    margin-bottom: 28px;
+}
+
+.top span {
+    font-size: 8px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    opacity: .4;
+}
+
+
+/* =========================
+   FOTO
+========================= */
+
+.profile {
+    text-align: center;
+}
+
+.profile img {
+    width: 155px;
+    height: 155px;
+    object-fit: cover;
+    border-radius: 50%;
+    padding: 5px;
+    border: 1px solid rgba(255,255,255,.3);
+
+    box-shadow:
+        0 0 35px rgba(255,255,255,.08);
+
+    transition: .5s;
+}
+
+.profile img:hover {
+    transform: scale(1.04);
+}
+
+
+/* =========================
+   NOME
+========================= */
+
+.name {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.name h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 42px;
+    font-weight: 500;
+    font-style: italic;
+}
+
+.username {
+    margin-top: 7px;
+    font-size: 11px;
+    opacity: .45;
+}
+
+
+/* =========================
+   FRASE
+========================= */
+
+.quote {
+    text-align: center;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 14px;
+    opacity: .65;
+    margin: 24px 0;
+}
+
+.line {
+    width: 65px;
+    height: 1px;
+    background: rgba(255,255,255,.25);
+    margin: 25px auto;
+}
+
+
+/* =========================
+   ABOUT
+========================= */
+
+.about {
+    padding: 22px;
+    border: 1px solid rgba(255,255,255,.1);
+    border-radius: 20px;
+
+    background: rgba(255,255,255,.035);
+    backdrop-filter: blur(15px);
+
+    text-align: center;
+}
+
+.section-title {
+    font-size: 8px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    opacity: .45;
+}
+
+.about p {
+    margin-top: 14px;
+    font-size: 12px;
+    line-height: 1.9;
+    opacity: .65;
+}
+
+
+/* =========================
+   GALERIA
+========================= */
+
+.gallery-title {
+    text-align: center;
+    margin-top: 35px;
+    margin-bottom: 15px;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.gallery img {
+    width: 100%;
+    height: 210px;
+    object-fit: cover;
+    border-radius: 15px;
+    filter: grayscale(15%);
+    opacity: .88;
+    transition: .5s;
+}
+
+.gallery img:hover {
+    transform: scale(1.02);
+    opacity: 1;
+    filter: grayscale(0%);
+}
+
+
+/* =========================
+   LINKS
+========================= */
+
+.links {
+    margin-top: 30px;
+}
+
+.button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    text-decoration: none;
+    color: white;
+
+    padding: 16px 18px;
+    margin: 11px 0;
+
+    border-radius: 16px;
+    border: 1px solid rgba(255,255,255,.11);
+
+    background: rgba(255,255,255,.035);
+    backdrop-filter: blur(10px);
+
+    font-size: 12px;
+
+    transition: .35s;
+}
+
+.button:hover {
+    transform: translateY(-3px);
+    background: rgba(255,255,255,.09);
+    border-color: rgba(255,255,255,.25);
+}
+
+.icon {
+    opacity: .55;
+}
+
+.arrow {
+    opacity: .4;
+}
+
+
+/* =========================
+   MÚSICA
+========================= */
+
+.music {
+    margin-top: 30px;
+
+    padding: 18px;
+
+    border-radius: 18px;
+
+    border: 1px solid rgba(255,255,255,.11);
+
+    background: rgba(255,255,255,.035);
+
+    backdrop-filter: blur(12px);
+}
+
+.music-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.music-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.album {
+    width: 45px;
+    height: 45px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.music-name {
+    font-size: 11px;
+}
+
+.music-name small {
+    display: block;
+    margin-top: 5px;
+    font-size: 9px;
+    opacity: .4;
+}
+
+.play {
+    width: 38px;
+    height: 38px;
+
+    border-radius: 50%;
+
+    border: 1px solid rgba(255,255,255,.3);
+
+    background: transparent;
+    color: white;
+
+    cursor: pointer;
+
+    transition: .3s;
+}
+
+.play:hover {
+    background: white;
+    color: black;
+}
+
+
+/* =========================
+   BARRA DE MÚSICA
+========================= */
+
+.progress {
+    margin-top: 15px;
+
+    width: 100%;
+    height: 2px;
+
+    background: rgba(255,255,255,.12);
+
+    border-radius: 5px;
+}
+
+.progress-bar {
+    width: 0%;
+    height: 100%;
+    background: white;
+
+    transition: width .2s linear;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer {
+    text-align: center;
+    margin-top: 40px;
+
+    font-size: 8px;
+    letter-spacing: 3px;
+
+    opacity: .25;
+    text-transform: uppercase;
+}
+
+
+/* =========================
+   ANIMAÇÃO DE ENTRADA
+========================= */
+
+.container {
+    animation: appear 1.5s ease;
+}
+
+@keyframes appear {
+
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     TELA INICIAL
+========================= -->
+
+<div id="intro">
+
+    <div class="intro-content">
+
+        <div class="intro-small">
+            welcome to
+        </div>
+
+        <div class="intro-title">
+            rubie space
+        </div>
+
+        <button class="enter" onclick="enterSite()">
+            ENTER ♡
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- ESTRELAS -->
+
+<div class="star star1">✦</div>
+<div class="star star2">✧</div>
+<div class="star star3">✦</div>
+<div class="star star4">✧</div>
+<div class="star star5">✦</div>
+<div class="star star6">✧</div>
+
+
+
+<div class="container">
+
+
+    <!-- TOPO -->
+
+    <div class="top">
+
+        <span>
+            personal space · 2026
+        </span>
+
+    </div>
+
+
+
+    <!-- FOTO PRINCIPAL -->
+
+    <div class="profile">
+
+        <img
+        src="foto1.jpg"
+        alt="Foto">
+
+    </div>
+
+
+
+    <!-- NOME -->
+
+    <div class="name">
+
+        <h1>
+            Rubie Janne
+        </h1>
+
+        <div class="username">
+            @rubiejanne
+        </div>
+
+    </div>
+
+
+
+    <!-- FRASE -->
+
+    <div class="quote">
+
+        “maybe i'm not what you think.”
+
+    </div>
+
+
+    <div class="line"></div>
+
+
+
+    <!-- SOBRE -->
+
+    <div class="about">
+
+        <div class="section-title">
+            about me
+        </div>
+
+        <p>
+
+            17 · student · music lover<br>
+
+            collecting memories, songs<br>
+
+            and little pieces of midnight.
+
+        </p>
+
+    </div>
+
+
+
+    <!-- GALERIA -->
+
+    <div class="gallery-title">
+
+        <div class="section-title">
+            little moments
+        </div>
+
+    </div>
+
+
+    <div class="gallery">
+
+        <img src="foto2.jpg" alt="Foto">
+
+        <img src="foto3.jpg" alt="Foto">
+
+        <img src="foto4.jpg" alt="Foto">
+
+        <img src="foto5.jpg" alt="Foto">
+
+    </div>
+
+
+
+    <!-- LINKS -->
+
+    <div class="links">
+
+
+        <a
+        class="button"
+        href="https://t.me/"
+        target="_blank">
+
+            <span class="icon">
+                ♡
+            </span>
+
+            Telegram
+
+            <span class="arrow">
+                ↗
+            </span>
+
+        </a>
+
+
+
+        <a
+        class="button"
+        href="https://instagram.com/"
+        target="_blank">
+
+            <span class="icon">
+                ♡
+            </span>
+
+            Instagram
+
+            <span class="arrow">
+                ↗
+            </span>
+
+        </a>
+
+
+
+        <a
+        class="button"
+        href="#"
+        target="_blank">
+
+            <span class="icon">
+                ♫
+            </span>
+
+            My playlist
+
+            <span class="arrow">
+                ↗
+            </span>
+
+        </a>
+
+
+
+        <a
+        class="button"
+        href="#"
+        target="_blank">
+
+            <span class="icon">
+                ✦
+            </span>
+
+            My favorite things
+
+            <span class="arrow">
+                ↗
+            </span>
+
+        </a>
+
+
+    </div>
+
+
+
+    <!-- PLAYER -->
+
+    <div class="music">
+
+
+        <div class="music-top">
+
+
+            <div class="music-info">
+
+                <img
+                class="album"
+                src="foto2.jpg"
+                alt="Capa">
+
+                <div class="music-name">
+
+                    currently playing
+
+                    <small>
+                        your song · ♫
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <button
+            class="play"
+            onclick="toggleMusic()">
+
+                ▶
+
+            </button>
+
+
+        </div>
+
+
+        <div class="progress">
+
+            <div
+            class="progress-bar"
+            id="progressBar">
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+    <!-- MÚSICA -->
+
+    <audio
+    id="music"
+    src="musica.mp3"
+    loop>
+    </audio>
+
+
+
+    <!-- RODAPÉ -->
+
+    <div class="footer">
+
+        made with ♡
+
+    </div>
+
+
+</div>
+
+
+
+<script>
+
+
+/* =========================
+   ENTRAR NO SITE
+========================= */
+
+function enterSite() {
+
+    const intro = document.getElementById("intro");
+
+    intro.classList.add("hide");
+
+    const music = document.getElementById("music");
+
+    music.play().catch(() => {});
+
+}
+
+
+/* =========================
+   PLAYER
+========================= */
+
+const music = document.getElementById("music");
+
+const playButton = document.querySelector(".play");
+
+const progressBar =
+document.getElementById("progressBar");
+
+
+function toggleMusic() {
+
+    if (music.paused) {
+
+        music.play();
+
+        playButton.innerHTML = "Ⅱ";
+
+    }
+
+    else {
+
+        music.pause();
+
+        playButton.innerHTML = "▶";
+
+    }
+
+}
+
+
+/* =========================
+   BARRA DE PROGRESSO
+========================= */
+
+music.addEventListener(
+    "timeupdate",
+    function() {
+
+        if (music.duration) {
+
+            const percentage =
+            (music.currentTime / music.duration) * 100;
+
+            progressBar.style.width =
+            percentage + "%";
+
+        }
+
+    }
+);
+
+
+</script>
+
+
+</body>
+
+</html>
