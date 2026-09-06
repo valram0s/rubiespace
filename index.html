@@ -1,818 +1,1297 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rubie ♡ my little space</title>
 
-<title>Rubie Space ♡</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&display=swap" rel="stylesheet">
 
-<style>
-
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=Playfair+Display:ital,wght@400;500;600&display=swap');
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    min-height: 100vh;
-    background:
-        radial-gradient(circle at 20% 10%, rgba(255,255,255,.08), transparent 25%),
-        radial-gradient(circle at 80% 80%, rgba(255,180,210,.08), transparent 30%),
-        #09080b;
-
-    color: #fff;
-    font-family: 'DM Sans', sans-serif;
-    overflow-x: hidden;
-}
-
-
-/* =========================
-   TELA DE ENTRADA
-========================= */
-
-#intro {
-    position: fixed;
-    inset: 0;
-    background: #09080b;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
-    transition: opacity 1s ease, visibility 1s ease;
-}
-
-#intro.hide {
-    opacity: 0;
-    visibility: hidden;
-}
-
-.intro-content {
-    text-align: center;
-}
-
-.intro-small {
-    font-size: 9px;
-    letter-spacing: 5px;
-    text-transform: uppercase;
-    opacity: .45;
-    margin-bottom: 20px;
-}
-
-.intro-title {
-    font-family: 'Playfair Display', serif;
-    font-style: italic;
-    font-size: 45px;
-    margin-bottom: 30px;
-}
-
-.enter {
-    border: 1px solid rgba(255,255,255,.35);
-    background: transparent;
-    color: white;
-    padding: 13px 35px;
-    border-radius: 30px;
-    letter-spacing: 3px;
-    font-size: 10px;
-    cursor: pointer;
-    transition: .4s;
-}
-
-.enter:hover {
-    background: white;
-    color: black;
-}
-
-
-/* =========================
-   PARTÍCULAS
-========================= */
-
-.star {
-    position: fixed;
-    color: rgba(255,255,255,.5);
-    font-size: 9px;
-    pointer-events: none;
-    animation: floating 6s infinite ease-in-out;
-    z-index: 0;
-}
-
-.star1 { top: 12%; left: 10%; }
-.star2 { top: 27%; left: 88%; animation-delay: 1s; }
-.star3 { top: 60%; left: 7%; animation-delay: 2s; }
-.star4 { top: 78%; left: 92%; animation-delay: 3s; }
-.star5 { top: 40%; left: 80%; animation-delay: 4s; }
-.star6 { top: 85%; left: 20%; animation-delay: 5s; }
-
-@keyframes floating {
-
-    0%,100% {
-        transform: translateY(0);
-        opacity: .25;
+  <style>
+    :root {
+      --pink: #DA2A5B;
+      --pink-dark: #B91F4B;
+      --pink-light: #F7A8BF;
+      --pink-pale: #FFE8EF;
+      --cream: #FFF8F5;
+      --white: #FFFFFF;
+      --ink: #321821;
+      --muted: #8E6671;
+      --line: #F1C8D3;
+      --shadow: 0 18px 50px rgba(120, 22, 52, .13);
+      --radius: 28px;
     }
 
-    50% {
-        transform: translateY(-18px);
-        opacity: .8;
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
-}
-
-
-/* =========================
-   CONTEÚDO
-========================= */
-
-.container {
-    width: 90%;
-    max-width: 460px;
-    margin: auto;
-    padding: 55px 0;
-    position: relative;
-    z-index: 2;
-}
-
-
-/* =========================
-   TOPO
-========================= */
-
-.top {
-    text-align: center;
-    margin-bottom: 28px;
-}
-
-.top span {
-    font-size: 8px;
-    letter-spacing: 5px;
-    text-transform: uppercase;
-    opacity: .4;
-}
-
-
-/* =========================
-   FOTO
-========================= */
-
-.profile {
-    text-align: center;
-}
-
-.profile img {
-    width: 155px;
-    height: 155px;
-    object-fit: cover;
-    border-radius: 50%;
-    padding: 5px;
-    border: 1px solid rgba(255,255,255,.3);
-
-    box-shadow:
-        0 0 35px rgba(255,255,255,.08);
-
-    transition: .5s;
-}
-
-.profile img:hover {
-    transform: scale(1.04);
-}
-
-
-/* =========================
-   NOME
-========================= */
-
-.name {
-    text-align: center;
-    margin-top: 20px;
-}
-
-.name h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: 42px;
-    font-weight: 500;
-    font-style: italic;
-}
-
-.username {
-    margin-top: 7px;
-    font-size: 11px;
-    opacity: .45;
-}
-
-
-/* =========================
-   FRASE
-========================= */
-
-.quote {
-    text-align: center;
-    font-family: 'Playfair Display', serif;
-    font-style: italic;
-    font-size: 14px;
-    opacity: .65;
-    margin: 24px 0;
-}
-
-.line {
-    width: 65px;
-    height: 1px;
-    background: rgba(255,255,255,.25);
-    margin: 25px auto;
-}
-
-
-/* =========================
-   ABOUT
-========================= */
-
-.about {
-    padding: 22px;
-    border: 1px solid rgba(255,255,255,.1);
-    border-radius: 20px;
-
-    background: rgba(255,255,255,.035);
-    backdrop-filter: blur(15px);
-
-    text-align: center;
-}
-
-.section-title {
-    font-size: 8px;
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    opacity: .45;
-}
 
-.about p {
-    margin-top: 14px;
-    font-size: 12px;
-    line-height: 1.9;
-    opacity: .65;
-}
-
-
-/* =========================
-   GALERIA
-========================= */
-
-.gallery-title {
-    text-align: center;
-    margin-top: 35px;
-    margin-bottom: 15px;
-}
-
-.gallery {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-}
-
-.gallery img {
-    width: 100%;
-    height: 210px;
-    object-fit: cover;
-    border-radius: 15px;
-    filter: grayscale(15%);
-    opacity: .88;
-    transition: .5s;
-}
-
-.gallery img:hover {
-    transform: scale(1.02);
-    opacity: 1;
-    filter: grayscale(0%);
-}
-
-
-/* =========================
-   LINKS
-========================= */
-
-.links {
-    margin-top: 30px;
-}
-
-.button {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    text-decoration: none;
-    color: white;
-
-    padding: 16px 18px;
-    margin: 11px 0;
-
-    border-radius: 16px;
-    border: 1px solid rgba(255,255,255,.11);
-
-    background: rgba(255,255,255,.035);
-    backdrop-filter: blur(10px);
-
-    font-size: 12px;
-
-    transition: .35s;
-}
-
-.button:hover {
-    transform: translateY(-3px);
-    background: rgba(255,255,255,.09);
-    border-color: rgba(255,255,255,.25);
-}
-
-.icon {
-    opacity: .55;
-}
-
-.arrow {
-    opacity: .4;
-}
-
-
-/* =========================
-   MÚSICA
-========================= */
-
-.music {
-    margin-top: 30px;
-
-    padding: 18px;
-
-    border-radius: 18px;
-
-    border: 1px solid rgba(255,255,255,.11);
-
-    background: rgba(255,255,255,.035);
-
-    backdrop-filter: blur(12px);
-}
-
-.music-top {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.music-info {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
-.album {
-    width: 45px;
-    height: 45px;
-    object-fit: cover;
-    border-radius: 10px;
-}
-
-.music-name {
-    font-size: 11px;
-}
-
-.music-name small {
-    display: block;
-    margin-top: 5px;
-    font-size: 9px;
-    opacity: .4;
-}
-
-.play {
-    width: 38px;
-    height: 38px;
-
-    border-radius: 50%;
-
-    border: 1px solid rgba(255,255,255,.3);
-
-    background: transparent;
-    color: white;
-
-    cursor: pointer;
-
-    transition: .3s;
-}
-
-.play:hover {
-    background: white;
-    color: black;
-}
-
-
-/* =========================
-   BARRA DE MÚSICA
-========================= */
-
-.progress {
-    margin-top: 15px;
-
-    width: 100%;
-    height: 2px;
-
-    background: rgba(255,255,255,.12);
-
-    border-radius: 5px;
-}
-
-.progress-bar {
-    width: 0%;
-    height: 100%;
-    background: white;
-
-    transition: width .2s linear;
-}
-
-
-/* =========================
-   FOOTER
-========================= */
-
-.footer {
-    text-align: center;
-    margin-top: 40px;
-
-    font-size: 8px;
-    letter-spacing: 3px;
-
-    opacity: .25;
-    text-transform: uppercase;
-}
-
-
-/* =========================
-   ANIMAÇÃO DE ENTRADA
-========================= */
-
-.container {
-    animation: appear 1.5s ease;
-}
-
-@keyframes appear {
-
-    from {
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background:
+        radial-gradient(circle at 8% 8%, rgba(218,42,91,.14), transparent 24%),
+        radial-gradient(circle at 90% 20%, rgba(247,168,191,.28), transparent 25%),
+        var(--cream);
+      color: var(--ink);
+      font-family: "DM Sans", sans-serif;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: .38;
+      background-image:
+        radial-gradient(rgba(218,42,91,.12) .7px, transparent .7px);
+      background-size: 8px 8px;
+      mask-image: linear-gradient(to bottom, black, transparent 85%);
+      z-index: -1;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    /* ---------- INTRO ---------- */
+
+    .intro {
+      position: fixed;
+      inset: 0;
+      background: var(--pink);
+      color: white;
+      display: grid;
+      place-items: center;
+      z-index: 100;
+      transition: opacity .7s ease, visibility .7s ease;
+    }
+
+    .intro.hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .intro-box {
+      text-align: center;
+      padding: 30px;
+      animation: floatIn 1s ease both;
+    }
+
+    .intro-bow {
+      width: 72px;
+      height: 48px;
+      margin: 0 auto 25px;
+      position: relative;
+    }
+
+    .intro-bow::before,
+    .intro-bow::after {
+      content: "";
+      position: absolute;
+      top: 5px;
+      width: 37px;
+      height: 38px;
+      background: white;
+      border-radius: 55% 45% 55% 45%;
+    }
+
+    .intro-bow::before {
+      left: 0;
+      transform: rotate(25deg);
+    }
+
+    .intro-bow::after {
+      right: 0;
+      transform: rotate(-25deg);
+    }
+
+    .intro-bow span {
+      position: absolute;
+      width: 27px;
+      height: 27px;
+      background: white;
+      border-radius: 50%;
+      left: 22px;
+      top: 11px;
+      z-index: 2;
+    }
+
+    .intro small {
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      font-size: 10px;
+      opacity: .82;
+    }
+
+    .intro h1 {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(48px, 9vw, 100px);
+      font-weight: 500;
+      font-style: italic;
+      margin: 7px 0 8px;
+    }
+
+    .intro p {
+      opacity: .88;
+      margin-bottom: 28px;
+    }
+
+    .enter {
+      border: 1px solid rgba(255,255,255,.7);
+      background: white;
+      color: var(--pink);
+      padding: 13px 25px;
+      border-radius: 999px;
+      cursor: pointer;
+      font-weight: 700;
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+
+    .enter:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(72, 7, 28, .2);
+    }
+
+    /* ---------- NAV ---------- */
+
+    .nav-wrap {
+      position: sticky;
+      top: 18px;
+      z-index: 20;
+      width: min(1120px, calc(100% - 30px));
+      margin: 18px auto 0;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      padding: 11px 13px 11px 19px;
+      background: rgba(255,255,255,.86);
+      backdrop-filter: blur(18px);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      box-shadow: 0 8px 30px rgba(120,22,52,.08);
+    }
+
+    .logo {
+      font-family: "Playfair Display", serif;
+      font-style: italic;
+      font-size: 22px;
+      color: var(--pink);
+      white-space: nowrap;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 5px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      padding: 9px 13px;
+      border-radius: 999px;
+      font-size: 12px;
+      color: var(--muted);
+      transition: .2s ease;
+    }
+
+    .nav-links a:hover {
+      background: var(--pink-pale);
+      color: var(--pink);
+    }
+
+    .mini-bow {
+      width: 35px;
+      height: 28px;
+      background: var(--pink);
+      border-radius: 55% 45% 55% 45%;
+      position: relative;
+      transform: rotate(-8deg);
+    }
+
+    .mini-bow::after {
+      content: "";
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--pink);
+      left: 11px;
+      top: 8px;
+      box-shadow: 0 0 0 4px white;
+    }
+
+    /* ---------- GENERAL ---------- */
+
+    main {
+      width: min(1120px, calc(100% - 30px));
+      margin: 0 auto;
+    }
+
+    section {
+      padding: 100px 0;
+      scroll-margin-top: 80px;
+    }
+
+    .eyebrow {
+      color: var(--pink);
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .18em;
+      margin-bottom: 14px;
+    }
+
+    .section-title {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(38px, 6vw, 68px);
+      font-weight: 500;
+      line-height: .98;
+      letter-spacing: -.03em;
+    }
+
+    .section-title em {
+      color: var(--pink);
+    }
+
+    .soft-card {
+      background: rgba(255,255,255,.78);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    /* ---------- HERO ---------- */
+
+    .hero {
+      min-height: 720px;
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 60px;
+      align-items: center;
+      padding-top: 90px;
+    }
+
+    .hero-copy {
+      position: relative;
+    }
+
+    .hero-copy h2 {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(64px, 9vw, 118px);
+      font-weight: 500;
+      line-height: .84;
+      letter-spacing: -.055em;
+      margin-bottom: 28px;
+    }
+
+    .hero-copy h2 span {
+      display: block;
+      color: var(--pink);
+      font-style: italic;
+      margin-left: 50px;
+    }
+
+    .hero-copy p {
+      max-width: 530px;
+      color: var(--muted);
+      line-height: 1.8;
+      font-size: 15px;
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-top: 25px;
+    }
+
+    .tag {
+      border: 1px solid var(--line);
+      color: var(--pink-dark);
+      background: white;
+      padding: 9px 14px;
+      border-radius: 999px;
+      font-size: 12px;
+    }
+
+    .hero-note {
+      margin-top: 28px;
+      font-family: "Playfair Display", serif;
+      font-style: italic;
+      color: var(--pink-dark);
+      font-size: 17px;
+    }
+
+    .hero-art {
+      position: relative;
+      min-height: 550px;
+    }
+
+    .hero-photo {
+      position: absolute;
+      inset: 25px 30px 30px 25px;
+      overflow: hidden;
+      border-radius: 48% 48% 25px 25px;
+      border: 8px solid white;
+      box-shadow: var(--shadow);
+      transform: rotate(2deg);
+      background: var(--pink-pale);
+    }
+
+    .hero-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .hero-sticker {
+      position: absolute;
+      background: white;
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      border-radius: 50%;
+      width: 115px;
+      height: 115px;
+      display: grid;
+      place-items: center;
+      color: var(--pink);
+      font-family: "Playfair Display", serif;
+      font-style: italic;
+      font-size: 17px;
+      text-align: center;
+      transform: rotate(-10deg);
+    }
+
+    .sticker-one {
+      top: 5px;
+      right: 0;
+    }
+
+    .sticker-two {
+      bottom: 5px;
+      left: 0;
+      width: 92px;
+      height: 92px;
+      font-size: 14px;
+      transform: rotate(9deg);
+    }
+
+    .sparkle {
+      position: absolute;
+      color: var(--pink);
+      font-size: 30px;
+    }
+
+    .s1 { top: 130px; left: 0; }
+    .s2 { bottom: 105px; right: 3px; font-size: 20px; }
+    .s3 { top: 65px; left: 15%; font-size: 17px; }
+
+    /* ---------- ABOUT ---------- */
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: .8fr 1.2fr;
+      gap: 25px;
+      align-items: stretch;
+    }
+
+    .about-card {
+      padding: 40px;
+    }
+
+    .about-card p {
+      color: var(--muted);
+      line-height: 1.85;
+      margin-top: 22px;
+    }
+
+    .little-list {
+      display: grid;
+      gap: 12px;
+      margin-top: 25px;
+    }
+
+    .little-list div {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+      color: var(--ink);
+    }
+
+    .little-list span {
+      color: var(--pink);
+      font-size: 17px;
+    }
+
+    .quote-card {
+      padding: 45px;
+      background: var(--pink);
+      color: white;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: flex-end;
+      min-height: 380px;
+    }
+
+    .quote-card::before {
+      content: "♡";
+      position: absolute;
+      right: -25px;
+      top: -45px;
+      font-size: 220px;
+      color: rgba(255,255,255,.12);
+      font-family: serif;
+    }
+
+    .quote-card blockquote {
+      position: relative;
+      font-family: "Playfair Display", serif;
+      font-style: italic;
+      font-size: clamp(30px, 4vw, 52px);
+      line-height: 1.1;
+      max-width: 580px;
+    }
+
+    .quote-card cite {
+      display: block;
+      font-family: "DM Sans", sans-serif;
+      font-style: normal;
+      font-size: 11px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      margin-top: 25px;
+      opacity: .8;
+    }
+
+    /* ---------- PHOTO ARCHIVE ---------- */
+
+    .archive-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 30px;
+      margin-bottom: 35px;
+    }
+
+    .archive-head p {
+      max-width: 370px;
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 14px;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      grid-auto-rows: 105px;
+      gap: 14px;
+    }
+
+    .photo {
+      position: relative;
+      overflow: hidden;
+      border-radius: 24px;
+      background: var(--pink-pale);
+      border: 4px solid white;
+      box-shadow: 0 10px 30px rgba(120,22,52,.09);
+    }
+
+    .photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .55s ease;
+    }
+
+    .photo:hover img {
+      transform: scale(1.06);
+    }
+
+    .photo:nth-child(1) { grid-column: span 5; grid-row: span 4; }
+    .photo:nth-child(2) { grid-column: span 3; grid-row: span 3; }
+    .photo:nth-child(3) { grid-column: span 4; grid-row: span 4; }
+    .photo:nth-child(4) { grid-column: span 3; grid-row: span 4; }
+    .photo:nth-child(5) { grid-column: span 4; grid-row: span 3; }
+    .photo:nth-child(6) { grid-column: span 5; grid-row: span 3; }
+
+    .photo-label {
+      position: absolute;
+      left: 12px;
+      bottom: 12px;
+      background: rgba(255,255,255,.9);
+      color: var(--pink-dark);
+      border-radius: 999px;
+      padding: 7px 10px;
+      font-size: 10px;
+      opacity: 0;
+      transform: translateY(5px);
+      transition: .25s ease;
+    }
+
+    .photo:hover .photo-label {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ---------- DIARY ---------- */
+
+    .diary-grid {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 20px;
+    }
+
+    .diary-card {
+      padding: 35px;
+    }
+
+    .diary-date {
+      color: var(--pink);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+    }
+
+    .diary-card h3 {
+      font-family: "Playfair Display", serif;
+      font-size: 35px;
+      font-weight: 500;
+      margin: 12px 0 16px;
+    }
+
+    .diary-card p {
+      color: var(--muted);
+      line-height: 1.85;
+      font-size: 14px;
+    }
+
+    .diary-small {
+      display: grid;
+      gap: 20px;
+    }
+
+    .note {
+      padding: 28px;
+      background: var(--pink-pale);
+      border: 1px solid var(--line);
+      border-radius: 25px;
+    }
+
+    .note strong {
+      font-family: "Playfair Display", serif;
+      font-size: 22px;
+      font-weight: 500;
+    }
+
+    .note p {
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.65;
+    }
+
+    /* ---------- MUSIC ---------- */
+
+    .music-section {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 25px;
+    }
+
+    .music-intro {
+      padding: 45px;
+      background: var(--pink);
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .music-intro::after {
+      content: "♫";
+      position: absolute;
+      right: -15px;
+      bottom: -55px;
+      font-size: 220px;
+      opacity: .12;
+      font-family: serif;
+    }
+
+    .music-intro .eyebrow {
+      color: white;
+      opacity: .75;
+    }
+
+    .music-intro h2 {
+      font-family: "Playfair Display", serif;
+      font-weight: 500;
+      font-size: 53px;
+      line-height: 1;
+    }
+
+    .music-intro p {
+      margin-top: 20px;
+      opacity: .85;
+      line-height: 1.7;
+      font-size: 14px;
+    }
+
+    .player {
+      padding: 35px;
+      display: flex;
+      align-items: center;
+      gap: 22px;
+    }
+
+    .album-art {
+      width: 130px;
+      height: 130px;
+      flex: 0 0 130px;
+      border-radius: 23px;
+      overflow: hidden;
+      border: 4px solid white;
+      box-shadow: 0 12px 30px rgba(120,22,52,.12);
+      background: var(--pink-light);
+    }
+
+    .album-art img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .player-info {
+      width: 100%;
+    }
+
+    .player-info small {
+      color: var(--pink);
+      text-transform: uppercase;
+      letter-spacing: .15em;
+      font-size: 9px;
+      font-weight: 700;
+    }
+
+    .player-info h3 {
+      font-family: "Playfair Display", serif;
+      font-size: 29px;
+      font-weight: 500;
+      margin: 5px 0 3px;
+    }
+
+    .player-info p {
+      color: var(--muted);
+      font-size: 12px;
+      margin-bottom: 18px;
+    }
+
+    audio {
+      width: 100%;
+      height: 36px;
+    }
+
+    .spotify {
+      display: inline-flex;
+      margin-top: 15px;
+      padding: 9px 14px;
+      border-radius: 999px;
+      background: var(--pink-pale);
+      color: var(--pink-dark);
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    /* ---------- LINKS ---------- */
+
+    .links-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+      margin-top: 30px;
+    }
+
+    .link-card {
+      padding: 25px;
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      transition: .25s ease;
+    }
+
+    .link-card:hover {
+      transform: translateY(-5px) rotate(-1deg);
+      box-shadow: var(--shadow);
+      border-color: var(--pink-light);
+    }
+
+    .link-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: var(--pink-pale);
+      color: var(--pink);
+      display: grid;
+      place-items: center;
+      margin-bottom: 18px;
+      font-size: 19px;
+    }
+
+    .link-card h3 {
+      font-family: "Playfair Display", serif;
+      font-size: 24px;
+      font-weight: 500;
+    }
+
+    .link-card p {
+      color: var(--muted);
+      font-size: 12px;
+      margin-top: 6px;
+    }
+
+    /* ---------- FOOTER ---------- */
+
+    footer {
+      margin-top: 40px;
+      padding: 70px 20px 35px;
+      background: var(--pink);
+      color: white;
+      text-align: center;
+    }
+
+    footer .bow {
+      margin: 0 auto 20px;
+      width: 48px;
+      height: 32px;
+      position: relative;
+    }
+
+    footer .bow::before,
+    footer .bow::after {
+      content: "";
+      position: absolute;
+      width: 27px;
+      height: 27px;
+      top: 2px;
+      background: white;
+      border-radius: 55% 45%;
+    }
+
+    footer .bow::before { left: 0; transform: rotate(25deg); }
+    footer .bow::after { right: 0; transform: rotate(-25deg); }
+
+    footer h2 {
+      font-family: "Playfair Display", serif;
+      font-size: 43px;
+      font-style: italic;
+      font-weight: 500;
+    }
+
+    footer p {
+      margin-top: 8px;
+      opacity: .8;
+      font-size: 12px;
+    }
+
+    .footer-line {
+      width: min(500px, 90%);
+      height: 1px;
+      background: rgba(255,255,255,.3);
+      margin: 35px auto 18px;
+    }
+
+    .copyright {
+      font-size: 10px;
+      opacity: .6;
+      letter-spacing: .08em;
+    }
+
+    /* ---------- ANIMATION ---------- */
+
+    @keyframes floatIn {
+      from {
         opacity: 0;
-        transform: translateY(20px);
-    }
-
-    to {
+        transform: translateY(18px);
+      }
+      to {
         opacity: 1;
         transform: translateY(0);
+      }
     }
 
-}
+    .reveal {
+      opacity: 0;
+      transform: translateY(25px);
+      transition: .7s ease;
+    }
 
-</style>
+    .reveal.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
 
+    /* ---------- MOBILE ---------- */
+
+    @media (max-width: 800px) {
+      .nav-links {
+        display: none;
+      }
+
+      nav {
+        justify-content: space-between;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        gap: 25px;
+        min-height: auto;
+        padding-top: 70px;
+      }
+
+      .hero-copy h2 {
+        font-size: clamp(60px, 18vw, 92px);
+      }
+
+      .hero-copy h2 span {
+        margin-left: 25px;
+      }
+
+      .hero-art {
+        min-height: 430px;
+      }
+
+      .about-grid,
+      .diary-grid,
+      .music-section {
+        grid-template-columns: 1fr;
+      }
+
+      .gallery {
+        grid-auto-rows: 90px;
+        gap: 9px;
+      }
+
+      .photo:nth-child(1) { grid-column: span 7; grid-row: span 4; }
+      .photo:nth-child(2) { grid-column: span 5; grid-row: span 3; }
+      .photo:nth-child(3) { grid-column: span 5; grid-row: span 4; }
+      .photo:nth-child(4) { grid-column: span 7; grid-row: span 4; }
+      .photo:nth-child(5) { grid-column: span 5; grid-row: span 3; }
+      .photo:nth-child(6) { grid-column: span 7; grid-row: span 3; }
+
+      .archive-head {
+        display: block;
+      }
+
+      .archive-head p {
+        margin-top: 15px;
+      }
+
+      .links-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .player {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .album-art {
+        width: 160px;
+        height: 160px;
+        flex-basis: 160px;
+      }
+
+      section {
+        padding: 75px 0;
+      }
+    }
+
+    @media (max-width: 500px) {
+      .nav-wrap,
+      main {
+        width: min(100% - 20px, 1120px);
+      }
+
+      .hero-art {
+        min-height: 370px;
+      }
+
+      .hero-photo {
+        inset: 20px 18px 20px 18px;
+      }
+
+      .hero-sticker {
+        width: 85px;
+        height: 85px;
+        font-size: 13px;
+      }
+
+      .sticker-one {
+        right: -2px;
+      }
+
+      .sticker-two {
+        left: -2px;
+      }
+
+      .about-card,
+      .quote-card,
+      .diary-card,
+      .music-intro,
+      .player {
+        padding: 28px;
+      }
+
+      .quote-card {
+        min-height: 300px;
+      }
+
+      .quote-card blockquote {
+        font-size: 32px;
+      }
+
+      .gallery {
+        grid-auto-rows: 75px;
+      }
+    }
+  </style>
 </head>
-
 
 <body>
 
+  <!-- INTRO -->
+  <div class="intro" id="intro">
+    <div class="intro-box">
+      <div class="intro-bow"><span></span></div>
+      <small>a little place on the internet</small>
+      <h1>Rubie Space</h1>
+      <p>memories, music & little things ♡</p>
+      <button class="enter" onclick="enterSite()">enter my little world ♡</button>
+    </div>
+  </div>
 
-<!-- =========================
-     TELA INICIAL
-========================= -->
+  <!-- NAV -->
+  <div class="nav-wrap">
+    <nav>
+      <a href="#top" class="logo">rubie ♡</a>
 
-<div id="intro">
+      <div class="nav-links">
+        <a href="#about">about</a>
+        <a href="#archive">archive</a>
+        <a href="#diary">diary</a>
+        <a href="#music">music</a>
+        <a href="#links">links</a>
+      </div>
 
-    <div class="intro-content">
+      <div class="mini-bow"></div>
+    </nav>
+  </div>
 
-        <div class="intro-small">
-            welcome to
+  <main id="top">
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-copy reveal">
+        <div class="eyebrow">welcome to my little world ♡</div>
+
+        <h2>
+          hello,
+          <span>I'm Rubie.</span>
+        </h2>
+
+        <p>
+          um cantinho meu na internet para guardar pequenas coisas:
+          fotografias, músicas, pensamentos, viagens, momentos bobos
+          e tudo aquilo que eu não quero deixar passar.
+        </p>
+
+        <div class="hero-tags">
+          <span class="tag">music ♫</span>
+          <span class="tag">travels 𓇼</span>
+          <span class="tag">little things ♡</span>
+          <span class="tag">pink days 🎀</span>
         </div>
 
-        <div class="intro-title">
-            rubie space
+        <div class="hero-note">
+          "a soft little archive of a life I'm still creating."
+        </div>
+      </div>
+
+      <div class="hero-art reveal">
+        <div class="hero-photo">
+          <img src="foto1.jpg" alt="Rubie">
         </div>
 
-        <button class="enter" onclick="enterSite()">
-            ENTER ♡
-        </button>
+        <div class="hero-sticker sticker-one">made with<br>love ♡</div>
+        <div class="hero-sticker sticker-two">just<br>because 🎀</div>
 
-    </div>
+        <div class="sparkle s1">✦</div>
+        <div class="sparkle s2">♡</div>
+        <div class="sparkle s3">✧</div>
+      </div>
+    </section>
 
-</div>
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="about-grid">
+        <div class="soft-card about-card reveal">
+          <div class="eyebrow">01 — about rubie</div>
+          <h2 class="section-title">a little bit <em>about me.</em></h2>
 
+          <p>
+            Eu gosto de transformar momentos comuns em pequenas memórias.
+            Este espaço nasceu para ser exatamente isso: pessoal, delicado
+            e um pouquinho caótico — como uma gaveta cheia de fotografias,
+            bilhetes, músicas e coisas que significam algo para mim.
+          </p>
 
-<!-- ESTRELAS -->
-
-<div class="star star1">✦</div>
-<div class="star star2">✧</div>
-<div class="star star3">✦</div>
-<div class="star star4">✧</div>
-<div class="star star5">✦</div>
-<div class="star star6">✧</div>
-
-
-
-<div class="container">
-
-
-    <!-- TOPO -->
-
-    <div class="top">
-
-        <span>
-            personal space · 2026
-        </span>
-
-    </div>
-
-
-
-    <!-- FOTO PRINCIPAL -->
-
-    <div class="profile">
-
-        <img
-        src="foto1.jpg"
-        alt="Foto">
-
-    </div>
-
-
-
-    <!-- NOME -->
-
-    <div class="name">
-
-        <h1>
-            Rubie Janne
-        </h1>
-
-        <div class="username">
-            @rubieejannee
+          <div class="little-list">
+            <div><span>♡</span> cantar e descobrir músicas novas</div>
+            <div><span>𓇼</span> viajar e conhecer lugares</div>
+            <div><span>✿</span> guardar pequenos detalhes</div>
+            <div><span>🎀</span> dias cor-de-rosa</div>
+          </div>
         </div>
 
-    </div>
+        <div class="quote-card soft-card reveal">
+          <blockquote>
+            "I want a life full of little things worth remembering."
+            <cite>— rubie</cite>
+          </blockquote>
+        </div>
+      </div>
+    </section>
 
-
-
-    <!-- FRASE -->
-
-    <div class="quote">
-
-        ☆ “you know what time it is.” ☆
-
-    </div>
-
-
-    <div class="line"></div>
-
-
-
-    <!-- SOBRE -->
-
-    <div class="about">
-
-        <div class="section-title">
-            about me
+    <!-- ARCHIVE -->
+    <section id="archive">
+      <div class="archive-head reveal">
+        <div>
+          <div class="eyebrow">02 — photo archive</div>
+          <h2 class="section-title">little <em>memories.</em></h2>
         </div>
 
         <p>
-
-            24 · music student · childrens's teacher<br>
-
-            collecting memories, songs<br>
-
-            and little pieces of midnight.
-
+          fotografias que eu não queria deixar perdidas na galeria do celular.
+          lugares, pessoas, dias ensolarados e momentos que merecem ficar aqui.
         </p>
+      </div>
 
-    </div>
-
-
-
-    <!-- GALERIA -->
-
-    <div class="gallery-title">
-
-        <div class="section-title">
-            little moments
+      <div class="gallery reveal">
+        <div class="photo">
+          <img src="foto1.jpg" alt="Memory 01">
+          <span class="photo-label">memory 01 ♡</span>
         </div>
 
-    </div>
+        <div class="photo">
+          <img src="foto2.jpg" alt="Memory 02">
+          <span class="photo-label">memory 02 ♡</span>
+        </div>
 
+        <div class="photo">
+          <img src="foto3.jpg" alt="Memory 03">
+          <span class="photo-label">memory 03 ♡</span>
+        </div>
 
-    <div class="gallery">
+        <div class="photo">
+          <img src="foto4.jpg" alt="Memory 04">
+          <span class="photo-label">memory 04 ♡</span>
+        </div>
 
-        <img src="foto2.jpg" alt="Foto">
+        <div class="photo">
+          <img src="foto5.jpg" alt="Memory 05">
+          <span class="photo-label">memory 05 ♡</span>
+        </div>
 
-        <img src="foto3.jpg" alt="Foto">
+        <div class="photo">
+          <img src="foto6.jpg" alt="Memory 06">
+          <span class="photo-label">memory 06 ♡</span>
+        </div>
+      </div>
+    </section>
 
-        <img src="foto4.jpg" alt="Foto">
+    <!-- DIARY -->
+    <section id="diary">
+      <div class="archive-head reveal">
+        <div>
+          <div class="eyebrow">03 — from my notes</div>
+          <h2 class="section-title">dear <em>diary...</em></h2>
+        </div>
 
-        <img src="foto5.jpg" alt="Foto">
+        <p>
+          pensamentos que provavelmente ficariam esquecidos em algum bloco
+          de notas se eu não colocasse eles aqui.
+        </p>
+      </div>
 
-    </div>
+      <div class="diary-grid">
+        <article class="soft-card diary-card reveal">
+          <div class="diary-date">05 / 09 / 2026</div>
+          <h3>somewhere between yesterday and tomorrow.</h3>
 
+          <p>
+            Às vezes eu acho que a melhor parte de crescer é perceber que
+            nem tudo precisa ter uma resposta imediatamente. Algumas coisas
+            podem simplesmente existir: um dia bonito, uma música repetida
+            dez vezes, uma conversa inesperada ou aquela sensação estranha
+            de que alguma coisa boa está chegando.
+          </p>
 
+          <p style="margin-top: 18px;">
+            Talvez seja isso que eu quero guardar aqui — não uma versão
+            perfeita da minha vida, mas os pequenos pedaços dela.
+          </p>
+        </article>
+
+        <div class="diary-small">
+          <article class="note reveal">
+            <strong>today's little thought ♡</strong>
+            <p>
+              "nem todo dia precisa ser extraordinário para ser especial."
+            </p>
+          </article>
+
+          <article class="note reveal">
+            <strong>currently...</strong>
+            <p>
+              ouvindo músicas antigas, pensando em viagens e querendo
+              fotografar absolutamente tudo.
+            </p>
+          </article>
+
+          <article class="note reveal">
+            <strong>things I don't want to forget</strong>
+            <p>
+              risadas sem motivo · cheiro de chuva · pôr do sol ·
+              mensagens inesperadas · músicas que lembram pessoas.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- MUSIC -->
+    <section id="music">
+      <div class="music-section">
+        <div class="music-intro soft-card reveal">
+          <div class="eyebrow">04 — listen with me</div>
+          <h2>music is a little piece of home.</h2>
+
+          <p>
+            algumas músicas parecem guardar versões diferentes da gente.
+            aqui ficam aquelas que eu quero ouvir mais uma vez.
+          </p>
+        </div>
+
+        <div class="soft-card player reveal">
+          <div class="album-art">
+            <img src="foto2.jpg" alt="Music cover">
+          </div>
+
+          <div class="player-info">
+            <small>now playing ♫</small>
+            <h3>my little playlist</h3>
+            <p>songs for pink days, long nights & everything between.</p>
+
+            <audio controls>
+              <source src="musica.mp3" type="audio/mpeg">
+              Seu navegador não suporta áudio.
+            </audio>
+
+            <a
+              class="spotify"
+              href="https://open.spotify.com/playlist/1Qkm5iiy6emosCpR1W0qcU?si=ZsOz016MTTi3udA6N90OGw&utm_source=copy-link&pi=y_PPzblfQqa8z"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              open my spotify ♡
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <!-- LINKS -->
+    <section id="links">
+      <div class="eyebrow reveal">05 — find me elsewhere</div>
+      <h2 class="section-title reveal">come say <em>hi.</em></h2>
 
-    <div class="links">
-
-
-        <a
-        class="button"
-        href="https://t.me/rubieejannee"
-        target="_blank">
-
-            <span class="icon">
-                ♡
-            </span>
-
-            Telegram
-
-            <span class="arrow">
-                ↗
-            </span>
-
-
+      <div class="links-grid">
+        <a class="link-card reveal" href="https://t.me/rubieejannee" target="_blank" rel="noopener noreferrer">
+          <div class="link-icon">♡</div>
+          <h3>my telegram</h3>
+          <p>little updates & pieces of my day</p>
         </a>
 
-
-
-        <a
-        class="button"
-        href="https://open.spotify.com/playlist/1Qkm5iiy6emosCpR1W0qcU?si=ZsOz016MTTi3udA6N90OGw&utm_source=copy-link&pi=y_PPzblfQqa8z"
-        target="_blank">
-
-            <span class="icon">
-                ♫
-            </span>
-
-            My playlist
-
-            <span class="arrow">
-                ↗
-            </span>
-
-
-    </div>
-
-
-
-    <!-- PLAYER -->
-
-    <div class="music">
-
-
-        <div class="music-top">
-
-
-            <div class="music-info">
-
-                <img
-                class="album"
-                src="foto6.jpg"
-                alt="Capa">
-
-                <div class="music-name">
-
-                    currently playing
-
-                    <small>
-                        your song · ♫
-                    </small>
-
-                </div>
-
-            </div>
-
-
-            <button
-            class="play"
-            onclick="toggleMusic()">
-
-                ▶
-
-            </button>
-
-
-        </div>
-
-
-        <div class="progress">
-
-            <div
-            class="progress-bar"
-            id="progressBar">
-            </div>
-
-        </div>
-
-
-    </div>
-
-
-    <!-- MÚSICA -->
-
-    <audio
-    id="music"
-    src="musica.mp3"
-    loop>
-    </audio>
-
-
-
-    <!-- RODAPÉ -->
-
-    <div class="footer">
-
-        made with ♡
-
-    </div>
-
-
-</div>
-
-
-
-<script>
-
-
-/* =========================
-   ENTRAR NO SITE
-========================= */
-
-function enterSite() {
-
-    const intro = document.getElementById("intro");
-
-    intro.classList.add("hide");
-
-    const music = document.getElementById("music");
-
-    music.play().catch(() => {});
-
-}
-
-
-/* =========================
-   PLAYER
-========================= */
-
-const music = document.getElementById("music");
-
-const playButton = document.querySelector(".play");
-
-const progressBar =
-document.getElementById("progressBar");
-
-
-function toggleMusic() {
-
-    if (music.paused) {
-
-        music.play();
-
-        playButton.innerHTML = "Ⅱ";
-
+        <a class="link-card reveal" href="https://t.me/chiaravittori" target="_blank" rel="noopener noreferrer">
+          <div class="link-icon">✦</div>
+          <h3>my channel</h3>
+          <p>photos, thoughts, music & more</p>
+        </a>
+
+        <a class="link-card reveal"
+           href="https://open.spotify.com/playlist/1Qkm5iiy6emosCpR1W0qcU?si=ZsOz016MTTi3udA6N90OGw&utm_source=copy-link&pi=y_PPzblfQqa8z"
+           target="_blank"
+           rel="noopener noreferrer">
+          <div class="link-icon">♫</div>
+          <h3>spotify</h3>
+          <p>what I'm listening to lately</p>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="bow"></div>
+    <h2>that's all for now, ♡</h2>
+    <p>see you somewhere in my little world.</p>
+
+    <div class="footer-line"></div>
+    <div class="copyright">rubie space · made with love & pink pixels</div>
+  </footer>
+
+  <script>
+    function enterSite() {
+      document.getElementById("intro").classList.add("hidden");
+      document.body.style.overflow = "auto";
     }
 
-    else {
+    document.body.style.overflow = "hidden";
 
-        music.pause();
-
-        playButton.innerHTML = "▶";
-
-    }
-
-}
-
-
-/* =========================
-   BARRA DE PROGRESSO
-========================= */
-
-music.addEventListener(
-    "timeupdate",
-    function() {
-
-        if (music.duration) {
-
-            const percentage =
-            (music.currentTime / music.duration) * 100;
-
-            progressBar.style.width =
-            percentage + "%";
-
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("show");
         }
+      });
+    }, {
+      threshold: 0.12
+    });
 
-    }
-);
-
-
-</script>
-
+    document.querySelectorAll(".reveal").forEach((element) => {
+      observer.observe(element);
+    });
+  </script>
 
 </body>
-
 </html>
